@@ -141,7 +141,7 @@
         app:layout_constraintEnd_toEndOf="parent" />
 
     <ImageButton
-        android:id="@+id/imageButton"
+        android:id="@+id/cancel_btn"
         android:layout_width="35dp"
         android:layout_height="31dp"
         android:background="@color/colorPrimary"

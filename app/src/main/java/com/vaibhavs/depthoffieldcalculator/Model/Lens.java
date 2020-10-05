@@ -5,16 +5,21 @@ package com.vaibhavs.depthoffieldcalculator.Model;
  * Data includes lens make, maximum aperture, and focal length.
  */
 public class Lens {
-    private final String make;
-    private final double maximum_aperture;
-    private final int focal_length;
+    private String make;
+    private double maximum_aperture;
+    private int focal_length;
+    private int imgID;
 
     //default constructor
-    public Lens(String make, double maximum_aperture, int focal_length) {
+
+    public Lens(String make, double maximum_aperture, int focal_length, int imgID) {
         this.make = make;
         this.maximum_aperture = maximum_aperture;
         this.focal_length = focal_length;
+        this.imgID = imgID;
     }
+
+
     // checks if selected aperture is larger than
     // lens maximum aperture and returns true
     public static boolean check_aperture(Lens ln,double aperture) {
@@ -31,6 +36,10 @@ public class Lens {
     public int getFocal_length() {
         return focal_length;
     }
+
+    public String getMake() { return make; }
+
+    public int getImgID() { return imgID; }
 
     @Override
     public String toString() {

@@ -21,11 +21,6 @@ public class LensManager implements Iterable<Lens>{
         return instance;
     }
 
-
-    public Lens get(int index) {
-        return lenses.get(index);
-    }
-
     public void add(Lens lens){
         lenses.add(lens);
     }

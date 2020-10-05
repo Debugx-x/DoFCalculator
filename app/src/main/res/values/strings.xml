@@ -26,4 +26,10 @@
     <string name="distance_to_subject_m">Distance to Subject [m]</string>
     <string name="calculate_dof">Calculate DoF</string>
     <string name="select_the_lens_to_use">Select the Lens to use</string>
+    <string name="dof_calculator">DoF Calculator</string>
+    <string name="go_back">GO BACK</string>
+    <string name="make_Here">MAKE Here</string>
+    <string name="focal_len_here">Focal len Here</string>
+    <string name="aperature_here">Aperature here</string>
+    <string name="lens">Lens</string>
 </resources>

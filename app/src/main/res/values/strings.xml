@@ -25,4 +25,5 @@
     <string name="selected_aperature">Selected Aperature</string>
     <string name="distance_to_subject_m">Distance to Subject [m]</string>
     <string name="calculate_dof">Calculate DoF</string>
+    <string name="select_the_lens_to_use">Select the Lens to use</string>
 </resources>

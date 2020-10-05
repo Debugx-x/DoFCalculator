@@ -13,4 +13,16 @@
     <string name="ex_canon">ex: Canon</string>
     <string name="ex_200_for_200mm">ex: 200 for 200mm</string>
     <string name="ex_2_8_for_f2_8">ex: 2.8 for F2.8</string>
+    <string name="focal_length">Focal length</string>
+    <string name="aperature">Aperature</string>
+    <string name="save">Save</string>
+    <string name="lens_details">Lens Details</string>
+    <string name="_0_029">0.029</string>
+    <string name="calculate">Calculate</string>
+    <string name="circle_of_confusion_m">Circle of Confusion [m]</string>
+    <string name="photo_details_with">Photo details with :</string>
+    <string name="calc">calc</string>
+    <string name="selected_aperature">Selected Aperature</string>
+    <string name="distance_to_subject_m">Distance to Subject [m]</string>
+    <string name="calculate_dof">Calculate DoF</string>
 </resources>

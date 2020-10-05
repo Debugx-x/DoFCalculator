@@ -22,24 +22,26 @@
         android:id="@+id/btn_cancel"
         android:layout_width="50dp"
         android:layout_height="41dp"
+        android:layout_marginTop="8dp"
         android:background="@color/colorPrimary"
         app:layout_constraintEnd_toStartOf="@+id/textView9"
         app:layout_constraintHorizontal_bias="0.04"
         app:layout_constraintStart_toStartOf="parent"
-        app:srcCompat="@drawable/abc_vector_test"
-        tools:layout_editor_absoluteY="12dp" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/abc_vector_test" />
 
     <TextView
         android:id="@+id/textView9"
         android:layout_width="146dp"
         android:layout_height="37dp"
-        android:text="Lens Details"
+        android:layout_marginEnd="120dp"
+        android:text="@string/lens_details"
         android:textColor="#FFFFFF"
         android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="@+id/Toolbar_add"
+        app:layout_constraintEnd_toEndOf="@+id/Toolbar_add"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.76"
-        tools:layout_editor_absoluteX="72dp" />
+        app:layout_constraintVertical_bias="0.76" />
 
     <com.google.android.material.textfield.TextInputEditText
         android:id="@+id/text_Make"
@@ -49,19 +51,21 @@
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="16dp"
         android:hint="@string/ex_canon"
+        android:inputType="textPersonName"
         android:singleLine="true"
         app:layout_constraintBottom_toTopOf="@+id/textView7"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
     <com.google.android.material.textfield.TextInputEditText
-        android:id="@+id/Text_Focallenght"
+        android:id="@+id/text_Focallenght"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="16dp"
         android:hint="@string/ex_200_for_200mm"
+        android:inputType="numberSigned"
         android:singleLine="true"
         app:layout_constraintBottom_toTopOf="@+id/textView8"
         app:layout_constraintEnd_toEndOf="parent"
@@ -76,6 +80,7 @@
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="19dp"
         android:hint="@string/ex_2_8_for_f2_8"
+        android:inputType="numberSigned|numberDecimal"
         android:singleLine="true"
         app:layout_constraintBottom_toTopOf="@+id/btn_Savelens"
         app:layout_constraintEnd_toEndOf="parent"
@@ -85,31 +90,26 @@
         android:id="@+id/textView6"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="70dp"
-        android:layout_marginBottom="12dp"
-        android:text="Make"
+        android:layout_marginStart="8dp"
+        android:text="@string/make"
         app:layout_constraintBottom_toTopOf="@+id/text_Make"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/Toolbar_add" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
         android:id="@+id/textView7"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
-        android:layout_marginBottom="12dp"
-        android:text="Focal length"
-        app:layout_constraintBottom_toTopOf="@+id/Text_Focallenght"
+        android:layout_marginStart="8dp"
+        android:text="@string/focal_length"
+        app:layout_constraintBottom_toTopOf="@+id/text_Focallenght"
         app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
         android:id="@+id/textView8"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
-        android:layout_marginBottom="12dp"
-        android:text="Aperature"
+        android:layout_marginStart="8dp"
+        android:text="@string/aperature"
         app:layout_constraintBottom_toTopOf="@+id/text_aperature"
         app:layout_constraintStart_toStartOf="parent" />
 
@@ -117,9 +117,9 @@
         android:id="@+id/btn_Savelens"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="7dp"
+        android:layout_marginEnd="16dp"
         android:layout_marginBottom="276dp"
-        android:text="Save Lens"
+        android:text="@string/save"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 

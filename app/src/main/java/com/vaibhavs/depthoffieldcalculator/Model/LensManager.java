@@ -10,6 +10,22 @@ import java.util.List;
 public class LensManager implements Iterable<Lens>{
     public List<Lens> lenses = new ArrayList<>();
 
+    private static LensManager instance;
+    private LensManager(){
+
+    }
+    public static LensManager getInstance(){
+        if (instance == null){
+            instance = new LensManager();
+        }
+        return instance;
+    }
+
+
+    public Lens get(int index) {
+        return lenses.get(index);
+    }
+
     public void add(Lens lens){
         lenses.add(lens);
     }
@@ -17,4 +33,5 @@ public class LensManager implements Iterable<Lens>{
     public Iterator<Lens> iterator() {
         return lenses.iterator();
     }
+
 }

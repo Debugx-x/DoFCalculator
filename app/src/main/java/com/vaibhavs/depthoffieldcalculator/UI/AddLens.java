@@ -1,69 +1,79 @@
 package com.vaibhavs.depthoffieldcalculator.UI;
 
-import androidx.appcompat.app.AppCompatActivity;
-
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.Toast;
 
-import com.vaibhavs.depthoffieldcalculator.Model.Lens;
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.vaibhavs.depthoffieldcalculator.Model.LensManager;
 import com.vaibhavs.depthoffieldcalculator.R;
 
 public class AddLens extends AppCompatActivity {
 
-    private static final String EXTRA_MESSAGE = "Extra - message";
-    public static Intent makeLaunchIntent(Context c, String msg){
-        Intent intent = new Intent(c, AddLens.class);
-        intent.putExtra(EXTRA_MESSAGE, msg);
-        return intent;
-    }
+    LensManager lenses = LensManager.getInstance();
 
-    private static String getMsg() {
-        return "msg";
-    }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_lens);
+        //Toolbar tb_add = findViewById(R.id.toolbar);
+        //setSupportActionBar(tb_add);
 
-        Intent i = getIntent();
-        String message = i.getStringExtra(EXTRA_MESSAGE);
-        Toast.makeText(this,message,Toast.LENGTH_LONG).show();
-        LensManager lenses = LensManager.getInstance();
+        Save_add();
+        Cancel_add();
+    }
 
 
-        EditText make_Et = findViewById(R.id.text_Make);
-        String Make = make_Et.getText().toString();
-        EditText max_aperature_Et = findViewById(R.id.text_aperature);
-        double Aperature = Double.parseDouble(max_aperature_Et.getText().toString());
-        EditText Focal_len_Et = findViewById(R.id.text_Focallenght);
-        int Flength = Integer.parseInt(Focal_len_Et.getText().toString());
-
+    private void Save_add() {
         Button Save_btn = findViewById(R.id.btn_Savelens);
         Save_btn.setOnClickListener(v -> {
+            EditText make_Et = findViewById(R.id.text_make);
+            String Make = make_Et.getText().toString();
+            if(Make.isEmpty()){
+                Toast.makeText(AddLens.this,"Make cannot be empty",Toast.LENGTH_SHORT).show();
+            }
+            EditText max_aperature_Et = findViewById(R.id.text_Apture);
+            double Aperature = Double.parseDouble(max_aperature_Et.getText().toString());
+            if(Aperature <= 1.3){
+                Toast.makeText(AddLens.this,"Aperture cannot be less than 1.4",Toast.LENGTH_SHORT).show();
+            }
+            EditText Focal_len_Et = findViewById(R.id.text_Focallength);
+            int Flength = Integer.parseInt(Focal_len_Et.getText().toString());
+            if(Flength < 12){
+                Toast.makeText(AddLens.this,"Focal length cannot be less than 12 or negative",Toast.LENGTH_SHORT).show();
+            }
             if(make_Et.getText().toString().isEmpty()||max_aperature_Et.getText().toString().isEmpty()||Focal_len_Et.getText().toString().isEmpty()) {
                 Toast.makeText(AddLens.this,"ERROR: Check input!",Toast.LENGTH_SHORT).show();
             } else {
-                lenses.add(new Lens(Make, Aperature, Flength,R.drawable.lens));
                 Toast.makeText(AddLens.this, "Lens Saved!", Toast.LENGTH_SHORT).show();
             }
+            Intent intent = new Intent();
+            intent.putExtra("Make of the lens",Make);
+            intent.putExtra("Focal length of the lens",Flength);
+            intent.putExtra("Aperture of lens",Aperature);
+            setResult(Activity.RESULT_OK,intent);
+            finish();
         });
-        Cancel_add();
     }
 
     public void Cancel_add() {
         ImageButton cancel_btn = findViewById(R.id.btn_cancel);
         cancel_btn.setOnClickListener(v -> {
             Toast.makeText(AddLens.this,"Pressed cancel, Going back",Toast.LENGTH_SHORT).show();
-            Intent intent = new Intent(AddLens.this,MainActivity.class);
-            startActivity(intent);
+            Intent intent = new Intent();
+            setResult(Activity.RESULT_CANCELED,intent);
+            finish();
         });
+    }
+    public  static  Intent makeLaunchIntent(Context context) {
+        Intent intent = new Intent(context,AddLens.class);
+        return  intent;
     }
 }

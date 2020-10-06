@@ -5,16 +5,17 @@ package com.vaibhavs.depthoffieldcalculator.Model;
  * It supports calculations for Hyperfocal point, Near Focalpoint,
  * Far Focalpoint, and Depth of field.
  */
-public class DOFCalculator {
-    private static final double COC = 0.029;    // "Circle of Confusion" for a "Full Frame" camera
+public class Calculator {
+    private final double COC;    // "Circle of Confusion" for a "Full Frame" camera
     private final Lens ln;
     private final double Distance;
     private final double Aperture;
 
-    public DOFCalculator(Lens ln, double aperture,double distance) {
+    public Calculator(Lens ln, double aperture,double distance,double COC) {
         this.ln = ln;
         this.Distance = this.changetoMM(distance);
         this.Aperture = aperture;
+        this.COC = COC;
     }
     // used to convert values from metres to millimetres
     public double changetoMM(double value){

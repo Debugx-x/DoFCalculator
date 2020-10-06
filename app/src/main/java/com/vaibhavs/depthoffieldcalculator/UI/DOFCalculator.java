@@ -82,7 +82,7 @@ public class DOFCalculator extends AppCompatActivity {
                 EditText aper_et = (EditText) findViewById(R.id.input_Aperature);
                 double Apert = Double.parseDouble(aper_et.getText().toString());
 
-                //textview
+                //Setting up textview
                 TextView NFocal_dist = (TextView) findViewById(R.id.text_NFDistance);
                 TextView FFocal_dist = (TextView) findViewById(R.id.text_FFDistance);
                 TextView DoField = (TextView) findViewById(R.id.text_DoF);

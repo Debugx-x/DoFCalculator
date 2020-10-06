@@ -17,7 +17,7 @@
         android:contentDescription="@string/lens" />
 
     <TextView
-        android:id="@+id/text_make"
+        android:id="@+id/input_Make"
         android:layout_width="104dp"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"

@@ -11,21 +11,22 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.vaibhavs.depthoffieldcalculator.Model.Lens;
 import com.vaibhavs.depthoffieldcalculator.Model.LensManager;
 import com.vaibhavs.depthoffieldcalculator.R;
 
 public class AddLens extends AppCompatActivity {
 
-    LensManager lenses = LensManager.getInstance();
+    LensManager lenses;
 
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_lens);
+        lenses = LensManager.getInstance();
         //Toolbar tb_add = findViewById(R.id.toolbar);
         //setSupportActionBar(tb_add);
-
         Save_add();
         Cancel_add();
     }
@@ -34,30 +35,31 @@ public class AddLens extends AppCompatActivity {
     private void Save_add() {
         Button Save_btn = findViewById(R.id.btn_Savelens);
         Save_btn.setOnClickListener(v -> {
-            EditText make_Et = findViewById(R.id.text_make);
+            EditText make_Et = findViewById(R.id.input_Make);
             String Make = make_Et.getText().toString();
             if(Make.isEmpty()){
                 Toast.makeText(AddLens.this,"Make cannot be empty",Toast.LENGTH_SHORT).show();
             }
-            EditText max_aperature_Et = findViewById(R.id.text_Apture);
+            EditText max_aperature_Et = findViewById(R.id.input_Aperture);
             double Aperature = Double.parseDouble(max_aperature_Et.getText().toString());
-            if(Aperature <= 1.3){
+            if(Aperature < 1.4){
                 Toast.makeText(AddLens.this,"Aperture cannot be less than 1.4",Toast.LENGTH_SHORT).show();
             }
-            EditText Focal_len_Et = findViewById(R.id.text_Focallength);
+            EditText Focal_len_Et = findViewById(R.id.input_FocalLength);
             int Flength = Integer.parseInt(Focal_len_Et.getText().toString());
-            if(Flength < 12){
+            if(Flength < 0){
                 Toast.makeText(AddLens.this,"Focal length cannot be less than 12 or negative",Toast.LENGTH_SHORT).show();
             }
             if(make_Et.getText().toString().isEmpty()||max_aperature_Et.getText().toString().isEmpty()||Focal_len_Et.getText().toString().isEmpty()) {
                 Toast.makeText(AddLens.this,"ERROR: Check input!",Toast.LENGTH_SHORT).show();
             } else {
                 Toast.makeText(AddLens.this, "Lens Saved!", Toast.LENGTH_SHORT).show();
+                lenses.add(new Lens(Make,Aperature,Flength,R.drawable.lens));
             }
             Intent intent = new Intent();
-            intent.putExtra("Make of the lens",Make);
-            intent.putExtra("Focal length of the lens",Flength);
-            intent.putExtra("Aperture of lens",Aperature);
+            intent.putExtra("Name of the lens", Make);
+            intent.putExtra("Aperture of the lens", Aperature);
+            intent.putExtra("Focal length of the lens", Flength);
             setResult(Activity.RESULT_OK,intent);
             finish();
         });
@@ -66,7 +68,7 @@ public class AddLens extends AppCompatActivity {
     public void Cancel_add() {
         ImageButton cancel_btn = findViewById(R.id.btn_cancel);
         cancel_btn.setOnClickListener(v -> {
-            Toast.makeText(AddLens.this,"Pressed cancel, Going back",Toast.LENGTH_SHORT).show();
+            Toast.makeText(AddLens.this,"Pressed cancel!",Toast.LENGTH_SHORT).show();
             Intent intent = new Intent();
             setResult(Activity.RESULT_CANCELED,intent);
             finish();

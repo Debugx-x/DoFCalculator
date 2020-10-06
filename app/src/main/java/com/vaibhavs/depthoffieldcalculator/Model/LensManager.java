@@ -20,7 +20,9 @@ public class LensManager implements Iterable<Lens>{
         }
         return instance;
     }
-
+    public List<Lens> getlens() {
+        return lenses;
+    }
     public void add(Lens lens){
         lenses.add(lens);
     }

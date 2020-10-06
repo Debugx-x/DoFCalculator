@@ -10,11 +10,13 @@
         android:id="@+id/text_HFDistance"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
         android:layout_marginTop="160dp"
         android:layout_marginEnd="120dp"
         android:text="@string/enter_all_values"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/textView15"
         app:layout_constraintTop_toTopOf="@+id/toolbar" />
 
     <TextView
@@ -23,9 +25,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="49dp"
         android:layout_marginTop="160dp"
-        android:layout_marginEnd="24dp"
         android:text="@string/hyperfocal_distance"
-        app:layout_constraintEnd_toStartOf="@+id/text_HFDistance"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/toolbar" />
 
@@ -35,9 +35,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="88dp"
         android:layout_marginTop="130dp"
-        android:layout_marginEnd="24dp"
         android:text="@string/depth_of_field"
-        app:layout_constraintEnd_toStartOf="@+id/text_DoF"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/toolbar" />
 
@@ -45,11 +43,13 @@
         android:id="@+id/text_DoF"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
         android:layout_marginTop="130dp"
         android:layout_marginEnd="120dp"
         android:text="@string/enter_all_values"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/textView14"
         app:layout_constraintTop_toTopOf="@+id/toolbar" />
 
     <TextView
@@ -58,9 +58,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="60dp"
         android:layout_marginTop="100dp"
-        android:layout_marginEnd="24dp"
         android:text="@string/far_focal_distance"
-        app:layout_constraintEnd_toStartOf="@+id/text_FFDistance"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/toolbar" />
 
@@ -68,11 +66,13 @@
         android:id="@+id/text_FFDistance"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
         android:layout_marginTop="100dp"
         android:layout_marginEnd="120dp"
         android:text="@string/enter_all_values"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/textView13"
         app:layout_constraintTop_toTopOf="@+id/toolbar" />
 
     <EditText
@@ -149,17 +149,16 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/lens_info"
-        android:layout_width="367dp"
-        android:layout_height="36dp"
+        android:id="@+id/text"
+        android:layout_width="159dp"
+        android:layout_height="35dp"
         android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"
         android:text="@string/photo_details_with"
         android:textSize="18sp"
         app:layout_constraintBottom_toTopOf="@+id/input_CoC"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.083"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView15"
+        app:layout_constraintVertical_bias="1.0" />
 
     <TextView
         android:id="@+id/textView4"
@@ -197,24 +196,13 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
-    <ImageButton
-        android:id="@+id/cancel_btn"
-        android:layout_width="54dp"
-        android:layout_height="54dp"
-        android:background="@color/colorPrimary"
-        app:layout_constraintStart_toStartOf="@id/toolbar"
-        app:layout_constraintTop_toTopOf="@+id/toolbar"
-        app:srcCompat="@drawable/ic_baseline_arrow_back_24" />
-
     <TextView
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="50dp"
         android:layout_marginTop="70dp"
-        android:layout_marginEnd="24dp"
         android:text="@string/near_focal_distance"
-        app:layout_constraintEnd_toStartOf="@+id/text_NFDistance"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/toolbar" />
 
@@ -222,10 +210,32 @@
         android:id="@+id/text_NFDistance"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
         android:layout_marginTop="70dp"
         android:layout_marginEnd="120dp"
         android:text="@string/enter_all_values"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/textView2"
         app:layout_constraintTop_toTopOf="@+id/toolbar" />
+
+    <TextView
+        android:id="@+id/text_display"
+        android:layout_width="201dp"
+        android:layout_height="34dp"
+        android:textSize="18sp"
+        android:textStyle="bold|italic"
+        app:layout_constraintBottom_toTopOf="@+id/input_CoC"
+        app:layout_constraintStart_toEndOf="@+id/text"
+        app:layout_constraintTop_toBottomOf="@+id/text_HFDistance"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <ImageButton
+        android:id="@+id/btn_back"
+        android:layout_width="52dp"
+        android:layout_height="49dp"
+        android:background="@color/colorPrimary"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_baseline_arrow_back_24" />
 </androidx.constraintlayout.widget.ConstraintLayout>

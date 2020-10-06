@@ -34,27 +34,24 @@ public class DOFCalculator extends AppCompatActivity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_d_o_f_calculator);
-        cancel_btn();
+        Back_btn();
         GetData();
         Display_Lens();
         Calculate();
     }
 
-    private void cancel_btn() {
-        ImageButton cancel_btn = findViewById(R.id.btn_cancel);
-        cancel_btn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Toast.makeText(DOFCalculator.this,"Pressed cancel, Going back",Toast.LENGTH_SHORT).show();
-                Intent intent = new Intent(DOFCalculator.this,MainActivity.class);
-                startActivity(intent);
-            }
+    private void Back_btn() {
+        ImageButton Backbtn = findViewById(R.id.btn_back);
+        Backbtn.setOnClickListener(v -> {
+            Toast.makeText(DOFCalculator.this,"Pressed cancel!",Toast.LENGTH_SHORT).show();
+            finish();
         });
     }
 
     private void Display_Lens() {
-        TextView display = findViewById(R.id.lens_info);
-        display.setText("Photo details with : " + ln.getMake() + " " + ln.getFocal_length() + "mm F" + ln.getMaximum_aperture());
+        TextView disp = (TextView)findViewById(R.id.text_display);
+        String len_info = ln.getMake() + " " + ln.getFocal_length() + "mm F" + ln.getMaximum_aperture();
+        disp.setText(len_info);
     }
 
     private void Calculate() {
@@ -80,16 +77,16 @@ public class DOFCalculator extends AppCompatActivity {
                     FFocal_dist.setText("Invalid Circle of Confusion");
                     DoField.setText("Invalid Circle of Confusion");
                     HFocal_dist.setText("Invalid Circle of Confusion");
-                } else if (Apert <= 1.3 ) {
-                    NFocal_dist.setText("Invalid Aperture");
-                    FFocal_dist.setText("Invalid Aperture");
-                    DoField.setText("Invalid Aperture");
-                    HFocal_dist.setText("Invalid Aperture");
                 } else if (Distance <= 0.0 ) {
                     NFocal_dist.setText("Invalid Distance to Subject");
                     FFocal_dist.setText("Invalid Distance to Subject");
                     DoField.setText("Invalid Distance to Subject");
                     HFocal_dist.setText("Invalid Distance to Subject");
+                } else if (Apert < 1.4 ) {
+                    NFocal_dist.setText("Invalid Aperture");
+                    FFocal_dist.setText("Invalid Aperture");
+                    DoField.setText("Invalid Aperture");
+                    HFocal_dist.setText("Invalid Aperture");
                 } else {
                     Calculator lens = new Calculator(ln,Apert,Distance,COC);
                     NFocal_dist.setText(formatM(lens.Calc_Near_Focalpoint())+"m");

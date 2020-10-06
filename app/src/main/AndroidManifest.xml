@@ -10,16 +10,22 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
+            android:name=".UI.AddLens"
+            android:label="AddLens"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".UI.DOFCalculator"
+            android:label="AddLens"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
             android:name=".UI.MainActivity"
             android:label="@string/title_activity_main"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
-                <action android:name="android.intent.category.Launcher"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
-        <activity android:name=".UI.DOFCalculator" />
-        <activity android:name=".UI.AddLens" />
     </application>
 
 </manifest>

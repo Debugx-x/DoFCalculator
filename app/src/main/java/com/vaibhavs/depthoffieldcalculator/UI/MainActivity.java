@@ -26,7 +26,8 @@ import com.vaibhavs.depthoffieldcalculator.R;
 public class MainActivity extends AppCompatActivity {
 
     LensManager lenses;
-    private static final int REQUESTED_CODE = 33;
+    private static boolean flag = false;
+    private static final int REQUESTED_CODE = 13;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -41,8 +42,7 @@ public class MainActivity extends AppCompatActivity {
             Intent intent = AddLens.makeLaunchIntent(MainActivity.this);
             startActivityForResult(intent, REQUESTED_CODE);
         });
-
-        populateLensManger();
+        populateLensMangerOnlyonce();
         populateList();
         registerClick();
         }
@@ -51,17 +51,16 @@ public class MainActivity extends AppCompatActivity {
 
         super.onActivityResult(requestCode, resultCode, data);
         if (resultCode == Activity.RESULT_CANCELED) {
-            Toast.makeText(getBaseContext(), "User Canceled", Toast.LENGTH_LONG).show();
             return;
         }
 
         switch (requestCode) {
             case REQUESTED_CODE:
                 if (resultCode == Activity.RESULT_OK) {
-                    String lens_make = data.getStringExtra("Name of lens");
-                    int lens_FocalLen = data.getIntExtra("Focal length of lens", 0);
-                    double lens_Aperture = data.getDoubleExtra("Aperture of lens", 0);
-                    lenses.add( new Lens(lens_make, lens_Aperture, lens_FocalLen, R.drawable.lens));
+                    String lens_make = data.getStringExtra("Name of the lens");
+                    int lens_FocalLen = data.getIntExtra("Focal length of the lens",0);
+                    double lens_Aperture = data.getDoubleExtra("Aperture of the lens", 0);
+                    Toast.makeText(MainActivity.this, "Added a New lens " + lens_make + " " + lens_FocalLen + "mm F" + lens_Aperture, Toast.LENGTH_SHORT).show();
                     ArrayAdapter<Lens> adapter = new myListAdapter();
                     ListView list = (ListView) findViewById(R.id.lensesList);
                     list.setAdapter(adapter);
@@ -69,11 +68,14 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    private void populateLensManger() {
-        lenses.add(new Lens("Canon", 1.8, 50,R.drawable.lens));
-        lenses.add(new Lens("Tamron", 2.8, 90,R.drawable.lens2));
-        lenses.add(new Lens("Sigma", 2.8, 200,R.drawable.lens3));
-        lenses.add(new Lens("Nikon", 4.0, 200,R.drawable.lens));
+    private void populateLensMangerOnlyonce() {
+        if(flag == false) {
+            lenses.add(new Lens("Canon", 1.8, 50, R.drawable.lens));
+            lenses.add(new Lens("Tamron", 2.8, 90, R.drawable.lens2));
+            lenses.add(new Lens("Sigma", 2.8, 200, R.drawable.lens3));
+            lenses.add(new Lens("Nikon", 4.0, 200, R.drawable.lens));
+            flag = true;
+        }
     }
 
     private void populateList() {
@@ -83,14 +85,14 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void registerClick() {
-        ListView Lv =findViewById(R.id.lensesList);
+        ListView Lv = (ListView) findViewById(R.id.lensesList);
         Lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Toast.makeText(MainActivity.this,"Lens Selected!",Toast.LENGTH_LONG).show();
-                Lens temp = lenses.lenses.get(position);
-                Intent intent = DOFCalculator.makeLaunchIntent(MainActivity.this,temp);
-                startActivity(intent);
+                        Toast.makeText(MainActivity.this, "Lens Selected!", Toast.LENGTH_LONG).show();
+                        Lens temp = lenses.lenses.get(position);
+                        Intent intent = DOFCalculator.makeLaunchIntent(MainActivity.this, temp);
+                        startActivity(intent);
             }
         });
     }
@@ -112,7 +114,7 @@ public class MainActivity extends AppCompatActivity {
             ImageView imageV = iview.findViewById(R.id.img_icon);
             imageV.setImageResource(temp.getImgID());
             //make
-            TextView makeT = iview.findViewById(R.id.text_make);
+            TextView makeT = iview.findViewById(R.id.input_Make);
             makeT.setText(temp.getMake());
             //F length
             TextView focallenT = iview.findViewById(R.id.text_focallen);

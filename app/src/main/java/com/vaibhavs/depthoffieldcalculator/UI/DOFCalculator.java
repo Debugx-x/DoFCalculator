@@ -111,6 +111,6 @@ public class DOFCalculator extends AppCompatActivity {
         String DOF_make = intent.getStringExtra(MAKE);
         int DOF_focalLength = intent.getIntExtra(FOCAL_LENGTH,0);
         double DOF_aperture = intent.getDoubleExtra(APERTURE,0.0);
-        ln = new Lens(DOF_make,DOF_aperture,DOF_focalLength,R.drawable.lens);
+        ln = new Lens(DOF_make,DOF_aperture,DOF_focalLength,R.drawable.lens1);
     }
 }

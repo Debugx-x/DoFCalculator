@@ -57,10 +57,10 @@ public class MainActivity extends AppCompatActivity {
         switch (requestCode) {
             case REQUESTED_CODE:
                 if (resultCode == Activity.RESULT_OK) {
-                    String lens_make = data.getStringExtra("Name of the lens");
-                    int lens_FocalLen = data.getIntExtra("Focal length of the lens",0);
-                    double lens_Aperture = data.getDoubleExtra("Aperture of the lens", 0);
-                    Toast.makeText(MainActivity.this, "Added a New lens " + lens_make + " " + lens_FocalLen + "mm F" + lens_Aperture, Toast.LENGTH_SHORT).show();
+                    String lens_make = data.getStringExtra("Name of the lens1");
+                    int lens_FocalLen = data.getIntExtra("Focal length of the lens1",0);
+                    double lens_Aperture = data.getDoubleExtra("Aperture of the lens1", 0);
+                    Toast.makeText(MainActivity.this, "Added a New lens1 " + lens_make + " " + lens_FocalLen + "mm F" + lens_Aperture, Toast.LENGTH_SHORT).show();
                     ArrayAdapter<Lens> adapter = new myListAdapter();
                     ListView list = (ListView) findViewById(R.id.lensesList);
                     list.setAdapter(adapter);
@@ -70,10 +70,10 @@ public class MainActivity extends AppCompatActivity {
 
     private void populateLensMangerOnlyonce() {
         if(flag == false) {
-            lenses.add(new Lens("Canon", 1.8, 50, R.drawable.lens));
+            lenses.add(new Lens("Canon", 1.8, 50, R.drawable.lens1));
             lenses.add(new Lens("Tamron", 2.8, 90, R.drawable.lens2));
             lenses.add(new Lens("Sigma", 2.8, 200, R.drawable.lens3));
-            lenses.add(new Lens("Nikon", 4.0, 200, R.drawable.lens));
+            lenses.add(new Lens("Nikon", 4.0, 200, R.drawable.lens4));
             flag = true;
         }
     }
@@ -111,7 +111,7 @@ public class MainActivity extends AppCompatActivity {
             }
             Lens temp = lenses.lenses.get(position);
             //img
-            ImageView imageV = iview.findViewById(R.id.img_icon);
+            ImageView imageV = iview.findViewById(R.id.icon_img);
             imageV.setImageResource(temp.getImgID());
             //make
             TextView makeT = iview.findViewById(R.id.input_Make);

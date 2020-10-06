@@ -1,8 +1,8 @@
 package com.vaibhavs.depthoffieldcalculator.Model;
 
 /**
- * Lens class models the information about Camera lens
- * Data includes lens make, maximum aperture, and focal length.
+ * Lens class models the information about Camera lens1
+ * Data includes lens1 make, maximum aperture, and focal length.
  */
 public class Lens {
     private String make;
@@ -21,18 +21,18 @@ public class Lens {
 
 
     // checks if selected aperture is larger than
-    // lens maximum aperture and returns true
+    // lens1 maximum aperture and returns true
     public static boolean check_aperture(Lens ln,double aperture) {
         if(ln.getMaximum_aperture() < aperture) {
             return true;
         }
         return false;
     }
-    // returns maximum aperture of the lens
+    // returns maximum aperture of the lens1
     public double getMaximum_aperture() {
         return maximum_aperture;
     }
-    // returns focal length of the lens
+    // returns focal length of the lens1
     public int getFocal_length() {
         return focal_length;
     }

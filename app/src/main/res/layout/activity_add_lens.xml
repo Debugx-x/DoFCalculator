@@ -45,6 +45,21 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.76" />
 
+    <EditText
+        android:id="@+id/input_Make"
+        android:layout_width="0dp"
+        android:layout_height="42dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="16dp"
+        android:ems="10"
+        android:hint="@string/ex_canon"
+        android:inputType="textPersonName"
+        app:layout_constraintBottom_toTopOf="@+id/textView7"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent" />
+
     <TextView
         android:id="@+id/textView7"
         android:layout_width="wrap_content"
@@ -66,6 +81,7 @@
         android:inputType="numberSigned"
         app:layout_constraintBottom_toTopOf="@+id/textView8"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
@@ -81,17 +97,27 @@
         app:layout_constraintVertical_bias="1.0" />
 
     <EditText
-        android:id="@+id/input_Make"
+        android:id="@+id/input_Aperture"
         android:layout_width="0dp"
         android:layout_height="42dp"
         android:layout_marginStart="8dp"
         android:layout_marginEnd="8dp"
-        android:layout_marginBottom="16dp"
+        android:layout_marginBottom="20dp"
         android:ems="10"
-        android:hint="@string/ex_canon"
-        android:inputType="textPersonName"
-        app:layout_constraintBottom_toTopOf="@+id/textView7"
+        android:hint="@string/ex_2_8_for_f2_8"
+        android:inputType="numberSigned|numberDecimal"
+        app:layout_constraintBottom_toTopOf="@+id/textView12"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/textView12"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:text="@string/icons"
+        app:layout_constraintBottom_toTopOf="@+id/Scroll_icons"
         app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
@@ -103,28 +129,83 @@
         app:layout_constraintBottom_toTopOf="@+id/input_Aperture"
         app:layout_constraintStart_toStartOf="parent" />
 
-    <EditText
-        android:id="@+id/input_Aperture"
-        android:layout_width="0dp"
-        android:layout_height="42dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="19dp"
-        android:ems="10"
-        android:hint="@string/ex_2_8_for_f2_8"
-        android:inputType="numberSigned|numberDecimal"
-        app:layout_constraintBottom_toTopOf="@+id/btn_Savelens"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
-
     <Button
         android:id="@+id/btn_Savelens"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="16dp"
-        android:layout_marginBottom="276dp"
+        android:layout_marginBottom="100dp"
         android:text="@string/save"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
+
+    <HorizontalScrollView
+        android:id="@+id/Scroll_icons"
+        android:layout_width="0dp"
+        android:layout_height="100dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="50dp"
+        app:layout_constraintBottom_toTopOf="@+id/btn_Savelens"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <ImageButton
+                android:id="@+id/img_icon1"
+                style="@style/Widget.AppCompat.ImageButton"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:adjustViewBounds="false"
+                android:cropToPadding="false"
+                android:scaleType="fitCenter"
+                app:srcCompat="@drawable/lens1"
+                tools:srcCompat="@drawable/lens1" />
+
+            <ImageButton
+                android:id="@+id/img_icon2"
+                style="@style/Widget.AppCompat.ImageButton"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:adjustViewBounds="false"
+                android:cropToPadding="false"
+                android:scaleType="fitCenter"
+                app:srcCompat="@drawable/lens2" />
+
+            <ImageButton
+                android:id="@+id/img_icon3"
+                style="@style/Widget.AppCompat.ImageButton"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:adjustViewBounds="false"
+                android:cropToPadding="false"
+                android:scaleType="fitCenter"
+                app:srcCompat="@drawable/lens3" />
+
+            <ImageButton
+                android:id="@+id/img_icon4"
+                style="@style/Widget.AppCompat.ImageButton"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:adjustViewBounds="false"
+                android:cropToPadding="false"
+                android:scaleType="fitCenter"
+                app:srcCompat="@drawable/lens4" />
+
+            <ImageButton
+                android:id="@+id/img_icon5"
+                style="@style/Widget.AppCompat.ImageButton"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:adjustViewBounds="false"
+                android:cropToPadding="false"
+                android:scaleType="fitCenter"
+                app:srcCompat="@drawable/lens5" />
+        </LinearLayout>
+    </HorizontalScrollView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

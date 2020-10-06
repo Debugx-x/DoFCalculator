@@ -5,7 +5,7 @@
     android:layout_height="match_parent">
 
     <ImageView
-        android:id="@+id/img_icon"
+        android:id="@+id/icon_img"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
@@ -13,40 +13,45 @@
         android:adjustViewBounds="true"
         android:maxWidth="80dp"
         android:maxHeight="80dp"
-        app:srcCompat="@drawable/lens"
+        app:srcCompat="@drawable/lens1"
         android:contentDescription="@string/lens" />
 
     <TextView
         android:id="@+id/input_Make"
-        android:layout_width="104dp"
-        android:layout_height="wrap_content"
+        android:layout_width="134dp"
+        android:layout_height="54dp"
         android:layout_alignParentTop="true"
-        android:layout_marginStart="26dp"
-        android:layout_toEndOf="@+id/img_icon"
+        android:layout_marginStart="18dp"
+        android:layout_marginTop="10dp"
+        android:layout_toEndOf="@+id/icon_img"
         android:text="@string/make_Here"
-        android:textSize="18sp"
+        android:textSize="30sp"
         android:textStyle="bold" />
 
     <TextView
         android:id="@+id/text_focallen"
         android:layout_width="wrap_content"
-        android:layout_height="34dp"
+        android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
-        android:layout_marginStart="107dp"
-        android:layout_marginTop="46dp"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="271dp"
+        android:layout_marginTop="7dp"
+        android:layout_marginEnd="-12dp"
         android:text="@string/focal_len_here"
-        android:textSize="18sp" />
+        android:textSize="24sp"
+        android:textStyle="italic" />
 
     <TextView
         android:id="@+id/text_aperature"
-        android:layout_width="136dp"
-        android:layout_height="34dp"
+        android:layout_width="wrap_content"
+        android:layout_height="35dp"
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
-        android:layout_marginTop="46dp"
-        android:layout_marginEnd="16dp"
+        android:layout_marginTop="39dp"
+        android:layout_marginEnd="54dp"
         android:text="@string/aperature_here"
-        android:textSize="18sp" />
+        android:textSize="24sp"
+        android:textStyle="italic" />
 
 </RelativeLayout>

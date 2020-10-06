@@ -17,6 +17,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.vaibhavs.depthoffieldcalculator.Model.Lens;
@@ -33,8 +34,8 @@ public class MainActivity extends AppCompatActivity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        //Toolbar tb = findViewById(R.id.toolbar);
-        //setSupportActionBar(tb);
+        Toolbar toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
 
         lenses = LensManager.getInstance();
         FloatingActionButton fab = findViewById(R.id.Add_lens);
@@ -45,7 +46,25 @@ public class MainActivity extends AppCompatActivity {
         populateLensMangerOnlyonce();
         populateList();
         registerClick();
+    }
+    @Override
+    public boolean onCreateOptionsMenu(Menu Mu){
+        getMenuInflater().inflate(R.menu.menu_main,Mu);
+        return true;
+    }
+
+    @Override
+    public  boolean onOptionsItemSelected(MenuItem item){
+        switch(item.getItemId()) {
+            case R.id.action_remove:
+                Intent i = new Intent(MainActivity.this,Setting_page.class);
+                startActivity(i);
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
         }
+    }
+
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
 
@@ -124,20 +143,5 @@ public class MainActivity extends AppCompatActivity {
             AperT.setText("F" + temp.getMaximum_aperture());
             return iview;
         }
-    }
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu Mu){
-        getMenuInflater().inflate(R.menu.menu_main,Mu);
-        return  true;
-    }
-
-    @Override
-    public  boolean onOptionsItemSelected(MenuItem item){
-        int id = item.getItemId();
-        if(id == R.id.action_settings){
-            return  true;
-        }
-        return super.onOptionsItemSelected(item);
     }
 }

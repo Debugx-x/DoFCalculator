@@ -4,13 +4,17 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.Toast;
 
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import com.vaibhavs.depthoffieldcalculator.Model.Lens;
 import com.vaibhavs.depthoffieldcalculator.Model.LensManager;
@@ -27,13 +31,35 @@ public class AddLens extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_lens);
         lenses = LensManager.getInstance();
-        //Toolbar tb_add = findViewById(R.id.toolbar);
-        //setSupportActionBar(tb_add);
+        Toolbar toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        ActionBar ab = getSupportActionBar();
+        ab.setDisplayHomeAsUpEnabled(true);
         Save_add();
-        Cancel_add();
-        //iconList();
-        //registerlistClick();
         selectIcon();
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu Mu){
+        getMenuInflater().inflate(R.menu.menu_add,Mu);
+        return true;
+    }
+
+    @Override
+    public  boolean onOptionsItemSelected(MenuItem item){
+        switch(item.getItemId()) {
+            case R.id.action_remove:
+                Intent i = new Intent(AddLens.this,RemoveLens.class);
+                startActivity(i);
+                return true;
+            case android.R.id.home:
+                Toast.makeText(AddLens.this,"Pressed cancel!",Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent();
+                setResult(Activity.RESULT_CANCELED,intent);
+                finish();
+            default:
+                return super.onOptionsItemSelected(item);
+        }
     }
 
     private void Save_add() {
@@ -68,16 +94,6 @@ public class AddLens extends AppCompatActivity {
             intent.putExtra("Aperture of the lens1", Aperature);
             intent.putExtra("Focal length of the lens1", Flength);
             setResult(Activity.RESULT_OK,intent);
-            finish();
-        });
-    }
-
-    public void Cancel_add() {
-        ImageButton cancel_btn = findViewById(R.id.btn_cancel);
-        cancel_btn.setOnClickListener(v -> {
-            Toast.makeText(AddLens.this,"Pressed cancel!",Toast.LENGTH_SHORT).show();
-            Intent intent = new Intent();
-            setResult(Activity.RESULT_CANCELED,intent);
             finish();
         });
     }

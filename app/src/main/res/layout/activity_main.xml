@@ -14,18 +14,18 @@
         android:layout_height="0dp"
         android:background="@color/colorPrimary"
         android:theme="@style/AppTheme.NoActionBar"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:navigationIcon="@drawable/ic_launcher_foreground"
         app:popupTheme="@style/AppTheme.NoActionBar"
         app:titleTextAppearance="@style/TextAppearance.AppCompat.Large" />
 
     <TextView
         android:id="@+id/textView11"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="4dp"
-        android:layout_marginEnd="125dp"
+        android:layout_width="218dp"
+        android:layout_height="51dp"
+        android:layout_marginEnd="176dp"
+        android:background="@color/colorPrimary"
         android:fontFamily="sans-serif-medium"
         android:text="@string/dof_calculator"
         android:textColor="#FFFFFF"

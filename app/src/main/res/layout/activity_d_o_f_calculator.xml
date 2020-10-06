@@ -134,14 +134,16 @@
         android:theme="?attr/actionBarTheme"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:navigationIcon="@drawable/ic_baseline_arrow_back_24" />
 
     <TextView
         android:id="@+id/textView"
-        android:layout_width="207dp"
-        android:layout_height="30dp"
-        android:layout_marginTop="14dp"
-        android:layout_marginEnd="100dp"
+        android:layout_width="235dp"
+        android:layout_height="42dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="110dp"
+        android:background="@color/colorPrimary"
         android:text="@string/calculate_dof"
         android:textColor="#FFFFFF"
         android:textSize="24sp"
@@ -230,12 +232,4 @@
         app:layout_constraintTop_toBottomOf="@+id/text_HFDistance"
         app:layout_constraintVertical_bias="1.0" />
 
-    <ImageButton
-        android:id="@+id/btn_back"
-        android:layout_width="52dp"
-        android:layout_height="49dp"
-        android:background="@color/colorPrimary"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/ic_baseline_arrow_back_24" />
 </androidx.constraintlayout.widget.ConstraintLayout>

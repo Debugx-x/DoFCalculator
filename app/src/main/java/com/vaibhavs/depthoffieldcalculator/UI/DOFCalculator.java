@@ -3,14 +3,17 @@ package com.vaibhavs.depthoffieldcalculator.UI;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import com.vaibhavs.depthoffieldcalculator.Model.Calculator;
 import com.vaibhavs.depthoffieldcalculator.Model.Lens;
@@ -34,19 +37,32 @@ public class DOFCalculator extends AppCompatActivity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_d_o_f_calculator);
-        Back_btn();
+        Toolbar toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        ActionBar ab = getSupportActionBar();
+        ab.setDisplayHomeAsUpEnabled(true);
         GetData();
         Display_Lens();
         Calculate();
     }
 
-    private void Back_btn() {
-        ImageButton Backbtn = findViewById(R.id.btn_back);
-        Backbtn.setOnClickListener(v -> {
-            Toast.makeText(DOFCalculator.this,"Pressed cancel!",Toast.LENGTH_SHORT).show();
-            finish();
-        });
+    @Override
+    public boolean onCreateOptionsMenu(Menu Mu){
+        getMenuInflater().inflate(R.menu.menu_back,Mu);
+        return true;
     }
+
+    @Override
+    public  boolean onOptionsItemSelected(MenuItem item){
+        switch(item.getItemId()) {
+            case android.R.id.home:
+                Toast.makeText(DOFCalculator.this,"Pressed cancel!",Toast.LENGTH_SHORT).show();
+                finish();
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
+
 
     private void Display_Lens() {
         TextView disp = (TextView)findViewById(R.id.text_display);
@@ -107,7 +123,7 @@ public class DOFCalculator extends AppCompatActivity {
     }
 
     private void GetData() {
-        Intent intent =getIntent();
+        Intent intent = getIntent();
         String DOF_make = intent.getStringExtra(MAKE);
         int DOF_focalLength = intent.getIntExtra(FOCAL_LENGTH,0);
         double DOF_aperture = intent.getDoubleExtra(APERTURE,0.0);

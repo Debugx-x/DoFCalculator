@@ -1,6 +1,6 @@
 <resources>
     <string name="app_name">Depth of Field Calculator</string>
-    <string name="action_settings">Settings</string>
+    <string name="action_settings">Credits</string>
     <!-- Strings used for fragments for navigation -->
     <string name="first_fragment_label">First Fragment</string>
     <string name="second_fragment_label">Second Fragment</string>
@@ -9,7 +9,7 @@
 
     <string name="hello_first_fragment">Hello first fragment</string>
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
-    <string name="title_activity_main">MainActivity</string>
+    <string name="title_activity_main">DoF Calculator</string>
     <string name="focal_length">Focal length</string>
     <string name="aperature">Aperature</string>
     <string name="save">Save</string>
@@ -44,4 +44,5 @@
     <string name="lens_5">lens 5</string>
     <string name="icons">Icons</string>
     <string name="icon_here">icon here</string>
+    <string name="disclaimer">This is a Depth of field calculator of camera lens, designed by Vaibhav Saini (Vaibhavs) and Hitin Thapar (hthapar) as part of our CMPT276 Assignment. We would like to acknowlegde that the don\'t own any of the Image Icons used in the the assignemnt and that they were mere a google search result. The original credits and copyrights to the Images belong to their respected publisher. We also would like to thank you for using our app.</string>
 </resources>

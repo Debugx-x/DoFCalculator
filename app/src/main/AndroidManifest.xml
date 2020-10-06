@@ -9,21 +9,30 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".UI.RemoveLens"></activity>
+        <activity
+            android:name=".UI.Setting_page"
+            android:label="Credits"
+            android:parentActivityName=".UI.MainActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".UI.AddLens"
-            android:label="AddLens"
+            android:label="Lens Details"
+            android:parentActivityName=".UI.MainActivity"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".UI.DOFCalculator"
-            android:label="AddLens"
+            android:label="Calculate DoF"
+            android:parentActivityName=".UI.MainActivity"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".UI.MainActivity"
             android:label="@string/title_activity_main"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN"/>
-                <category android:name="android.intent.category.LAUNCHER"/>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
     </application>

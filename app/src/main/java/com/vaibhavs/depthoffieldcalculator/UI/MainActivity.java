@@ -46,6 +46,12 @@ public class MainActivity extends AppCompatActivity {
         populateLensMangerOnlyonce();
         populateList();
         registerClick();
+        if(lenses.lenses.size() == 0 )
+        {
+            TextView tv = (TextView) findViewById(R.id.text_newlens);
+            tv.setText("Add a New Lens to Begin -->");
+
+        }
     }
     @Override
     public boolean onCreateOptionsMenu(Menu Mu){
@@ -79,7 +85,7 @@ public class MainActivity extends AppCompatActivity {
                     String lens_make = data.getStringExtra("Name of the lens1");
                     int lens_FocalLen = data.getIntExtra("Focal length of the lens1",0);
                     double lens_Aperture = data.getDoubleExtra("Aperture of the lens1", 0);
-                    Toast.makeText(MainActivity.this, "Added a New lens1 " + lens_make + " " + lens_FocalLen + "mm F" + lens_Aperture, Toast.LENGTH_SHORT).show();
+                    Toast.makeText(MainActivity.this, "Added a New Lens " + lens_make + " " + lens_FocalLen + "mm F" + lens_Aperture, Toast.LENGTH_SHORT).show();
                     ArrayAdapter<Lens> adapter = new myListAdapter();
                     ListView list = (ListView) findViewById(R.id.lensesList);
                     list.setAdapter(adapter);
@@ -88,11 +94,13 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void populateLensMangerOnlyonce() {
-        if(flag == false) {
+        TextView tv = findViewById(R.id.text_newlens);
+        if(!flag) {
             lenses.add(new Lens("Canon", 1.8, 50, R.drawable.lens1));
             lenses.add(new Lens("Tamron", 2.8, 90, R.drawable.lens2));
             lenses.add(new Lens("Sigma", 2.8, 200, R.drawable.lens3));
             lenses.add(new Lens("Nikon", 4.0, 200, R.drawable.lens4));
+            tv.setText(" ");
             flag = true;
         }
     }

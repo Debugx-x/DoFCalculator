@@ -20,20 +20,20 @@ public class Setting_page extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         ActionBar ab = getSupportActionBar();
-        ab.setDisplayHomeAsUpEnabled(true);
+        ab.setDisplayShowHomeEnabled(true);
     }
 
     @Override
-    public boolean onCreateOptionsMenu(Menu Mu) {
-        getMenuInflater().inflate(R.menu.menu_back, Mu);
+    public boolean onCreateOptionsMenu(Menu Mu){
+        getMenuInflater().inflate(R.menu.menu_back,Mu);
         return true;
     }
 
     @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
+    public  boolean onOptionsItemSelected(MenuItem item){
+        switch(item.getItemId()) {
             case android.R.id.home:
-                Toast.makeText(Setting_page.this, "Pressed Back!", Toast.LENGTH_SHORT).show();
+                Toast.makeText(Setting_page.this,"Pressed Back!",Toast.LENGTH_SHORT).show();
                 finish();
             default:
                 return super.onOptionsItemSelected(item);

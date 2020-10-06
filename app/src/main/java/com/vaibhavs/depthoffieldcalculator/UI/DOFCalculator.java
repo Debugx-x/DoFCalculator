@@ -98,7 +98,7 @@ public class DOFCalculator extends AppCompatActivity {
                     FFocal_dist.setText("Invalid Distance to Subject");
                     DoField.setText("Invalid Distance to Subject");
                     HFocal_dist.setText("Invalid Distance to Subject");
-                } else if (Apert < 1.4 ) {
+                } else if (Apert < 1.4 || Apert < ln.getMaximum_aperture() ) {
                     NFocal_dist.setText("Invalid Aperture");
                     FFocal_dist.setText("Invalid Aperture");
                     DoField.setText("Invalid Aperture");

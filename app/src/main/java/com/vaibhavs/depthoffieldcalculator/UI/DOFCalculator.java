@@ -15,8 +15,10 @@ import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.vaibhavs.depthoffieldcalculator.Model.Calculator;
 import com.vaibhavs.depthoffieldcalculator.Model.Lens;
+import com.vaibhavs.depthoffieldcalculator.Model.LensManager;
 import com.vaibhavs.depthoffieldcalculator.R;
 
 import java.text.DecimalFormat;
@@ -26,6 +28,8 @@ public class DOFCalculator extends AppCompatActivity {
     private static final String MAKE = "Canon";
     private static final String FOCAL_LENGTH = "200";
     private static final String APERTURE = "2.8";
+    private static final int REQUESTED_CODE = 13;
+    LensManager lenses;
     Lens ln;
 
     private String formatM(double distanceInM){
@@ -41,6 +45,13 @@ public class DOFCalculator extends AppCompatActivity {
         setSupportActionBar(toolbar);
         ActionBar ab = getSupportActionBar();
         ab.setDisplayHomeAsUpEnabled(true);
+
+        lenses = LensManager.getInstance();
+        FloatingActionButton fab = findViewById(R.id.floatingActionButton_edit);
+        fab.setOnClickListener(v -> {
+            Intent intent = EditLens.makeLaunchIntent(DOFCalculator.this, ln);
+            startActivity(intent);
+            });
         GetData();
         Display_Lens();
         Calculate();
@@ -48,13 +59,17 @@ public class DOFCalculator extends AppCompatActivity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu Mu){
-        getMenuInflater().inflate(R.menu.menu_back,Mu);
+        getMenuInflater().inflate(R.menu.menu_add,Mu);
         return true;
     }
 
     @Override
     public  boolean onOptionsItemSelected(MenuItem item){
         switch(item.getItemId()) {
+            case R.id.action_remove:
+                Intent i = new Intent(DOFCalculator.this,RemoveLens.class);
+                startActivity(i);
+                return true;
             case android.R.id.home:
                 Toast.makeText(DOFCalculator.this,"Pressed cancel!",Toast.LENGTH_SHORT).show();
                 finish();

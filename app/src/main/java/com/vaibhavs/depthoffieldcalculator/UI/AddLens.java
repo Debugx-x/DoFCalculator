@@ -7,7 +7,6 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.Toast;
@@ -35,34 +34,61 @@ public class AddLens extends AppCompatActivity {
         setSupportActionBar(toolbar);
         ActionBar ab = getSupportActionBar();
         ab.setDisplayHomeAsUpEnabled(true);
-        Save_add();
+        //Save_add();
         selectIcon();
     }
 
     @Override
     public boolean onCreateOptionsMenu(Menu Mu){
-        getMenuInflater().inflate(R.menu.menu_add,Mu);
+        getMenuInflater().inflate(R.menu.menu_save_back,Mu);
         return true;
     }
 
     @Override
     public  boolean onOptionsItemSelected(MenuItem item){
         switch(item.getItemId()) {
-            case R.id.action_remove:
-                Intent i = new Intent(AddLens.this,RemoveLens.class);
-                startActivity(i);
-                return true;
+            case R.id.action_bar_button_ok:
+                EditText make_Et = findViewById(R.id.input_Make);
+                String Make = make_Et.getText().toString();
+                if(Make.isEmpty()){
+                    Toast.makeText(AddLens.this,"Make cannot be empty",Toast.LENGTH_SHORT).show();
+                }
+                EditText max_aperature_Et = findViewById(R.id.input_Aperture);
+                double Aperature = Double.parseDouble(max_aperature_Et.getText().toString());
+                if(Aperature < 1.4){
+                    Toast.makeText(AddLens.this,"Aperture cannot be less than 1.4",Toast.LENGTH_SHORT).show();
+                }
+                EditText Focal_len_Et = findViewById(R.id.input_FocalLength);
+                int Flength = Integer.parseInt(Focal_len_Et.getText().toString());
+                if(Flength < 0){
+                    Toast.makeText(AddLens.this,"Focal length cannot be less than 12 or negative",Toast.LENGTH_SHORT).show();
+                }
+                if(Iconid == 0){
+                    Toast.makeText(AddLens.this,"Select a lens icon",Toast.LENGTH_SHORT).show();
+                }
+                if(make_Et.getText().toString().isEmpty()||max_aperature_Et.getText().toString().isEmpty()||Focal_len_Et.getText().toString().isEmpty()||Iconid == 0) {
+                    Toast.makeText(AddLens.this,"ERROR: Check input!",Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(AddLens.this, "Lens Saved!", Toast.LENGTH_SHORT).show();
+                    lenses.add(new Lens(Make,Aperature,Flength,Iconid));
+                }
+                Intent intent = new Intent();
+                intent.putExtra("Name of the lens1", Make);
+                intent.putExtra("Aperture of the lens1", Aperature);
+                intent.putExtra("Focal length of the lens1", Flength);
+                setResult(Activity.RESULT_OK,intent);
+                finish();
             case android.R.id.home:
                 Toast.makeText(AddLens.this,"Pressed cancel!",Toast.LENGTH_SHORT).show();
-                Intent intent = new Intent();
-                setResult(Activity.RESULT_CANCELED,intent);
+                Intent i = new Intent();
+                setResult(Activity.RESULT_CANCELED,i);
                 finish();
             default:
                 return super.onOptionsItemSelected(item);
         }
     }
 
-    private void Save_add() {
+    /*private void Save_add() {
         Button Save_btn = findViewById(R.id.btn_Savelens);
         Save_btn.setOnClickListener(v -> {
             EditText make_Et = findViewById(R.id.input_Make);
@@ -96,7 +122,7 @@ public class AddLens extends AppCompatActivity {
             setResult(Activity.RESULT_OK,intent);
             finish();
         });
-    }
+    }*/
 
     private void selectIcon() {
         ImageButton btn_icon1 = (ImageButton) findViewById(R.id.img_icon1);

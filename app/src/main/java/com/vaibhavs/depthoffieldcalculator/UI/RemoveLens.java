@@ -116,6 +116,7 @@ public class RemoveLens extends AppCompatActivity {
                     Toast.makeText(RemoveLens.this, "Lens " + lens_remove.toString() + " has been Deleted!", Toast.LENGTH_SHORT).show();
                     lenses.remove(lens_remove);
                     lens_remove = null;
+                    finish();
                 } else {
                     Toast.makeText(RemoveLens.this, "Please select a Lens to Delete", Toast.LENGTH_SHORT).show();
                 }

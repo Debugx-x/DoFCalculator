@@ -11,7 +11,7 @@
         android:theme="@style/AppTheme">
         <activity
             android:name=".UI.RemoveLens"
-            android:label="Remove Lens"
+            android:label="Delete Lens"
             android:parentActivityName=".UI.AddLens"
             android:theme="@style/AppTheme.NoActionBar"></activity>
         <activity

@@ -50,7 +50,9 @@ public class MainActivity extends AppCompatActivity {
         {
             TextView tv = (TextView) findViewById(R.id.text_newlens);
             tv.setText("Add a New Lens to Begin -->");
-
+        } else {
+            TextView tv1 = (TextView) findViewById(R.id.text_newlens);
+            tv1.setText("");
         }
     }
     @Override
@@ -86,11 +88,11 @@ public class MainActivity extends AppCompatActivity {
                     int lens_FocalLen = data.getIntExtra("Focal length of the lens1",0);
                     double lens_Aperture = data.getDoubleExtra("Aperture of the lens1", 0);
                     Toast.makeText(MainActivity.this, "Added a New Lens " + lens_make + " " + lens_FocalLen + "mm F" + lens_Aperture, Toast.LENGTH_SHORT).show();
-                    ArrayAdapter<Lens> adapter = new myListAdapter();
-                    ListView list = (ListView) findViewById(R.id.lensesList);
-                    list.setAdapter(adapter);
                 }
         }
+        ArrayAdapter<Lens> adapter = new myListAdapter();
+        ListView list = (ListView) findViewById(R.id.lensesList);
+        list.setAdapter(adapter);
     }
 
     private void populateLensMangerOnlyonce() {
@@ -100,7 +102,6 @@ public class MainActivity extends AppCompatActivity {
             lenses.add(new Lens("Tamron", 2.8, 90, R.drawable.lens2));
             lenses.add(new Lens("Sigma", 2.8, 200, R.drawable.lens3));
             lenses.add(new Lens("Nikon", 4.0, 200, R.drawable.lens4));
-            tv.setText(" ");
             flag = true;
         }
     }

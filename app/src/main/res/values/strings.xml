@@ -45,5 +45,7 @@
     <string name="icons">Icons</string>
     <string name="icon_here">icon here</string>
     <string name="disclaimer">This is a Depth of field calculator of camera lens, designed by Vaibhav Saini (Vaibhavs) and Hitin Thapar (hthapar) as part of our CMPT276 Assignment. We would like to acknowlegde that the don\'t own any of the Image Icons used in the the assignemnt and that they were mere a google search result. The original credits and copyrights to the Images belong to their respected publisher. We also would like to thank you for using our app.</string>
-    <string name="add_lens_here">Add lens here</string>
+    <string name="add_lens_here"> </string>
+    <string name="confirm_remove"> Delete </string>
+    <string name="select_lens_to_remove">Select Lens to Delete</string>
 </resources>

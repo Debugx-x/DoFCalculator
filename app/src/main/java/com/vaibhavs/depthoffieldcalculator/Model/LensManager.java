@@ -26,6 +26,7 @@ public class LensManager implements Iterable<Lens>{
     public void add(Lens lens){
         lenses.add(lens);
     }
+    public  void remove(Lens lens) { lenses.remove(lens); }
     @Override
     public Iterator<Lens> iterator() {
         return lenses.iterator();

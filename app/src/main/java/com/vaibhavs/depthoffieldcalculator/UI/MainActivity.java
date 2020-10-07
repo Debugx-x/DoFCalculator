@@ -51,7 +51,7 @@ public class MainActivity extends AppCompatActivity {
         if(lenses.lenses.size() == 0 )
         {
             TextView tv = (TextView) findViewById(R.id.text_newlens);
-            tv.setText("Add a New Lens to Begin -->");
+            tv.setText("Add a New Lens to begin by clicking on the '+' button");
         } else {
             TextView tv1 = (TextView) findViewById(R.id.text_newlens);
             tv1.setText("");

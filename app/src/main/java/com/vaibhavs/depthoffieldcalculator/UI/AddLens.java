@@ -19,6 +19,8 @@ import com.vaibhavs.depthoffieldcalculator.Model.Lens;
 import com.vaibhavs.depthoffieldcalculator.Model.LensManager;
 import com.vaibhavs.depthoffieldcalculator.R;
 
+// Adds lens with help of entry boxes
+
 public class AddLens extends AppCompatActivity {
 
     LensManager lenses;
@@ -43,6 +45,8 @@ public class AddLens extends AppCompatActivity {
         getMenuInflater().inflate(R.menu.menu_save_back,Mu);
         return true;
     }
+
+    // Only viable data gets stored
 
     @Override
     public  boolean onOptionsItemSelected(MenuItem item){
@@ -123,6 +127,8 @@ public class AddLens extends AppCompatActivity {
             finish();
         });
     }*/
+
+    // Lens Image(Icon) selector
 
     private void selectIcon() {
         ImageButton btn_icon1 = (ImageButton) findViewById(R.id.img_icon1);

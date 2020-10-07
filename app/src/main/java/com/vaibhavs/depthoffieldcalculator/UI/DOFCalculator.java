@@ -23,6 +23,8 @@ import com.vaibhavs.depthoffieldcalculator.R;
 
 import java.text.DecimalFormat;
 
+// Displays camera details and allows user to calculate Depth of Field for specified values
+
 public class DOFCalculator extends AppCompatActivity {
 
     private static final String MAKE = "Canon";

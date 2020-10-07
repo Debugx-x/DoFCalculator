@@ -24,6 +24,8 @@ import com.vaibhavs.depthoffieldcalculator.Model.Lens;
 import com.vaibhavs.depthoffieldcalculator.Model.LensManager;
 import com.vaibhavs.depthoffieldcalculator.R;
 
+// Home page
+
 public class MainActivity extends AppCompatActivity {
 
     LensManager lenses;

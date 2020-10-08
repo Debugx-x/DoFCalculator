@@ -120,8 +120,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                         Toast.makeText(MainActivity.this, "Lens Selected!", Toast.LENGTH_LONG).show();
-                        Lens temp = lenses.lenses.get(position);
-                        Intent intent = DOFCalculator.makeLaunchIntent(MainActivity.this, temp);
+                        Intent intent = DOFCalculator.makeLaunchIntent(MainActivity.this, position);
                         startActivity(intent);
             }
         });

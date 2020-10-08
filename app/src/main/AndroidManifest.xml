@@ -12,13 +12,13 @@
         <activity
             android:name=".UI.EditLens"
             android:label="Edit Lens"
-            android:parentActivityName=".UI.DOFCalculator"
+            android:parentActivityName=".UI.MainActivity"
             android:theme="@style/AppTheme.NoActionBar">
         </activity>
         <activity
             android:name=".UI.RemoveLens"
             android:label="Delete Lens"
-            android:parentActivityName=".UI.DOFCalculator"
+            android:parentActivityName=".UI.MainActivity"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".UI.Setting_page"

@@ -49,4 +49,9 @@
     <string name="opt_ft">Optional features:\n1. App Bar Buttons\n2. Edit and Delete Lens\n3. Error Checking Input\n6. Lens Icon\n7. Empty State</string>
     <string name="confirm_remove"> Delete </string>
     <string name="select_lens_to_remove">Select Lens to Delete</string>
+    <string name="aperture">Aperture</string>
+    <string name="textview">TextView</string>
+    <string name="lens_focal_length">Lens Focal Length</string>
+    <string name="lens_make">Lens Make</string>
+    <string name="make">Make</string>
 </resources>

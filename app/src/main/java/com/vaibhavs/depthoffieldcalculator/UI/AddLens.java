@@ -6,7 +6,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.Toast;
@@ -36,7 +35,6 @@ public class AddLens extends AppCompatActivity {
         setSupportActionBar(toolbar);
         ActionBar ab = getSupportActionBar();
         ab.setDisplayHomeAsUpEnabled(true);
-        //Save_add();
         selectIcon();
     }
 
@@ -56,120 +54,75 @@ public class AddLens extends AppCompatActivity {
                 String Make = make_Et.getText().toString();
                 if(Make.isEmpty()){
                     Toast.makeText(AddLens.this,"Make cannot be empty",Toast.LENGTH_SHORT).show();
+                    break;
                 }
                 EditText max_aperature_Et = findViewById(R.id.input_Aperture);
                 double Aperature = Double.parseDouble(max_aperature_Et.getText().toString());
                 if(Aperature < 1.4){
                     Toast.makeText(AddLens.this,"Aperture cannot be less than 1.4",Toast.LENGTH_SHORT).show();
+                    break;
                 }
                 EditText Focal_len_Et = findViewById(R.id.input_FocalLength);
                 int Flength = Integer.parseInt(Focal_len_Et.getText().toString());
                 if(Flength < 0){
-                    Toast.makeText(AddLens.this,"Focal length cannot be less than 12 or negative",Toast.LENGTH_SHORT).show();
+                    Toast.makeText(AddLens.this,"Focal length cannot be 0 or negative",Toast.LENGTH_SHORT).show();
+                    break;
                 }
                 if(Iconid == 0){
-                    Toast.makeText(AddLens.this,"Select a lens icon",Toast.LENGTH_SHORT).show();
+                    Toast.makeText(AddLens.this,"Lens icon not selected",Toast.LENGTH_SHORT).show();
+                    break;
                 }
                 if(make_Et.getText().toString().isEmpty()||max_aperature_Et.getText().toString().isEmpty()||Focal_len_Et.getText().toString().isEmpty()||Iconid == 0) {
                     Toast.makeText(AddLens.this,"ERROR: Check input!",Toast.LENGTH_SHORT).show();
+                    break;
                 } else {
                     Toast.makeText(AddLens.this, "Lens Saved!", Toast.LENGTH_SHORT).show();
-                    lenses.add(new Lens(Make,Aperature,Flength,Iconid));
+                    lenses.add(new Lens(Make, Aperature, Flength, Iconid));
+                    Intent intent = new Intent();
+                    intent.putExtra("Name of the lens1", Make);
+                    intent.putExtra("Aperture of the lens1", Aperature);
+                    intent.putExtra("Focal length of the lens1", Flength);
+                    setResult(Activity.RESULT_OK, intent);
+                    finish();
                 }
-                Intent intent = new Intent();
-                intent.putExtra("Name of the lens1", Make);
-                intent.putExtra("Aperture of the lens1", Aperature);
-                intent.putExtra("Focal length of the lens1", Flength);
-                setResult(Activity.RESULT_OK,intent);
-                finish();
             case android.R.id.home:
-                Toast.makeText(AddLens.this,"Pressed cancel!",Toast.LENGTH_SHORT).show();
+                Toast.makeText(AddLens.this,"Pressed back!",Toast.LENGTH_SHORT).show();
                 Intent i = new Intent();
                 setResult(Activity.RESULT_CANCELED,i);
                 finish();
             default:
                 return super.onOptionsItemSelected(item);
         }
+        return super.onOptionsItemSelected(item);
     }
-
-    /*private void Save_add() {
-        Button Save_btn = findViewById(R.id.btn_Savelens);
-        Save_btn.setOnClickListener(v -> {
-            EditText make_Et = findViewById(R.id.input_Make);
-            String Make = make_Et.getText().toString();
-            if(Make.isEmpty()){
-                Toast.makeText(AddLens.this,"Make cannot be empty",Toast.LENGTH_SHORT).show();
-            }
-            EditText max_aperature_Et = findViewById(R.id.input_Aperture);
-            double Aperature = Double.parseDouble(max_aperature_Et.getText().toString());
-            if(Aperature < 1.4){
-                Toast.makeText(AddLens.this,"Aperture cannot be less than 1.4",Toast.LENGTH_SHORT).show();
-            }
-            EditText Focal_len_Et = findViewById(R.id.input_FocalLength);
-            int Flength = Integer.parseInt(Focal_len_Et.getText().toString());
-            if(Flength < 0){
-                Toast.makeText(AddLens.this,"Focal length cannot be less than 12 or negative",Toast.LENGTH_SHORT).show();
-            }
-            if(Iconid == 0){
-                Toast.makeText(AddLens.this,"Select a lens icon",Toast.LENGTH_SHORT).show();
-            }
-            if(make_Et.getText().toString().isEmpty()||max_aperature_Et.getText().toString().isEmpty()||Focal_len_Et.getText().toString().isEmpty()||Iconid == 0) {
-                Toast.makeText(AddLens.this,"ERROR: Check input!",Toast.LENGTH_SHORT).show();
-            } else {
-                Toast.makeText(AddLens.this, "Lens Saved!", Toast.LENGTH_SHORT).show();
-                lenses.add(new Lens(Make,Aperature,Flength,Iconid));
-            }
-            Intent intent = new Intent();
-            intent.putExtra("Name of the lens1", Make);
-            intent.putExtra("Aperture of the lens1", Aperature);
-            intent.putExtra("Focal length of the lens1", Flength);
-            setResult(Activity.RESULT_OK,intent);
-            finish();
-        });
-    }*/
 
     // Lens Image(Icon) selector
 
     private void selectIcon() {
         ImageButton btn_icon1 = (ImageButton) findViewById(R.id.img_icon1);
-        btn_icon1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Toast.makeText(AddLens.this,"Selected Icon 1",Toast.LENGTH_SHORT).show();
-                Iconid = iconIDs[0];
-            }
+        btn_icon1.setOnClickListener(v -> {
+            Toast.makeText(AddLens.this,"Selected Icon 1",Toast.LENGTH_SHORT).show();
+            Iconid = iconIDs[0];
         });
         ImageButton btn_icon2 = (ImageButton) findViewById(R.id.img_icon2);
-        btn_icon2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Toast.makeText(AddLens.this,"Selected Icon 2",Toast.LENGTH_SHORT).show();
-                Iconid = iconIDs[1];
-            }
+        btn_icon2.setOnClickListener(v -> {
+            Toast.makeText(AddLens.this,"Selected Icon 2",Toast.LENGTH_SHORT).show();
+            Iconid = iconIDs[1];
         });
         ImageButton btn_icon3 = (ImageButton) findViewById(R.id.img_icon3);
-        btn_icon3.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Toast.makeText(AddLens.this,"Selected Icon 3",Toast.LENGTH_SHORT).show();
-                Iconid = iconIDs[2];
-            }
+        btn_icon3.setOnClickListener(v -> {
+            Toast.makeText(AddLens.this,"Selected Icon 3",Toast.LENGTH_SHORT).show();
+            Iconid = iconIDs[2];
         });
         ImageButton btn_icon4 = (ImageButton) findViewById(R.id.img_icon4);
-        btn_icon4.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Toast.makeText(AddLens.this,"Selected Icon 4",Toast.LENGTH_SHORT).show();
-                Iconid = iconIDs[3];
-            }
+        btn_icon4.setOnClickListener(v -> {
+            Toast.makeText(AddLens.this,"Selected Icon 4",Toast.LENGTH_SHORT).show();
+            Iconid = iconIDs[3];
         });
         ImageButton btn_icon5 = (ImageButton) findViewById(R.id.img_icon5);
-        btn_icon5.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Toast.makeText(AddLens.this,"Selected Icon 5",Toast.LENGTH_SHORT).show();
-                Iconid = iconIDs[4];
-            }
+        btn_icon5.setOnClickListener(v -> {
+            Toast.makeText(AddLens.this,"Selected Icon 5",Toast.LENGTH_SHORT).show();
+            Iconid = iconIDs[4];
         });
     }
     public  static  Intent makeLaunchIntent(Context context) {

@@ -10,6 +10,7 @@ public class Lens {
     private int focal_length;
     private int imgID;
 
+
     //default constructor
 
     public Lens(String make, double maximum_aperture, int focal_length, int imgID) {
@@ -40,6 +41,18 @@ public class Lens {
     public String getMake() { return make; }
 
     public int getImgID() { return imgID; }
+
+    public void setMake(String make) {
+        this.make = make;
+    }
+
+    public void setMaximum_aperture(double maximum_aperture) {
+        this.maximum_aperture = maximum_aperture;
+    }
+
+    public void setFocal_length(int focal_length) {
+        this.focal_length = focal_length;
+    }
 
     @Override
     public String toString() {

@@ -14,7 +14,7 @@
         android:layout_marginEnd="32dp"
         android:ems="10"
         android:inputType="numberSigned|numberDecimal"
-        android:text="Aperture"
+        android:text="@string/aperture"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView20" />
@@ -25,7 +25,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
-        android:text="TextView"
+        android:text="@string/textview"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/input_Lensfl" />
 
@@ -37,7 +37,7 @@
         android:layout_marginEnd="32dp"
         android:ems="10"
         android:inputType="number"
-        android:text="Focal_Length"
+        android:text="@string/focal_length"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView19" />
@@ -48,7 +48,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
-        android:text="Lens Focal Length"
+        android:text="@string/lens_focal_length"
         android:textSize="18sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/input_Lensmake" />
@@ -71,7 +71,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="32dp"
-        android:text="Lens Make"
+        android:text="@string/lens_make"
         android:textSize="18sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/toolbar" />
@@ -84,7 +84,7 @@
         android:layout_marginEnd="32dp"
         android:ems="10"
         android:inputType="textPersonName"
-        android:text="Make"
+        android:text="@string/make"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView18" />

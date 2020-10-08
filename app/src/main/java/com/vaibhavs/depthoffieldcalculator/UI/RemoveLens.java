@@ -7,7 +7,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -41,24 +40,34 @@ public class RemoveLens extends AppCompatActivity {
 
         populateList();
         registerClick();
-        deleteButton();
     }
 
     @Override
     public boolean onCreateOptionsMenu(Menu Mu){
-        getMenuInflater().inflate(R.menu.menu_back,Mu);
+        getMenuInflater().inflate(R.menu.menu_delete_back,Mu);
         return true;
     }
 
     @Override
     public  boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
+            case R.id.action_bar_button_ok:
+                if (lens_remove != null) {
+                    Toast.makeText(RemoveLens.this, "Lens " + lens_remove.toString() + " has been Deleted!", Toast.LENGTH_SHORT).show();
+                    lenses.remove(lens_remove);
+                    lens_remove = null;
+                } else {
+                    Toast.makeText(RemoveLens.this, "Please select a Lens to Delete", Toast.LENGTH_SHORT).show();
+                    break;
+                }
+                break;
             case android.R.id.home:
                 Toast.makeText(RemoveLens.this, "Pressed Back!", Toast.LENGTH_SHORT).show();
                 finish();
             default:
                 return super.onOptionsItemSelected(item);
         }
+        return super.onOptionsItemSelected(item);
     }
     private void populateList() {
         ArrayAdapter<Lens> adapter = new RemoveLens.myListAdapter();
@@ -105,22 +114,5 @@ public class RemoveLens extends AppCompatActivity {
             AperT.setText("F" + temp.getMaximum_aperture());
             return iview;
         }
-    }
-
-    private void deleteButton() {
-        Button del_btn = (Button) findViewById(R.id.btn_remove);
-        del_btn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (lens_remove != null) {
-                    Toast.makeText(RemoveLens.this, "Lens " + lens_remove.toString() + " has been Deleted!", Toast.LENGTH_SHORT).show();
-                    lenses.remove(lens_remove);
-                    lens_remove = null;
-                    finish();
-                } else {
-                    Toast.makeText(RemoveLens.this, "Please select a Lens to Delete", Toast.LENGTH_SHORT).show();
-                }
-            }
-        });
     }
 }

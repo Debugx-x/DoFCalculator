@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.EditText;
 import android.widget.Toast;
 
 import androidx.appcompat.app.ActionBar;
@@ -17,9 +18,7 @@ import com.vaibhavs.depthoffieldcalculator.R;
 
 public class EditLens extends AppCompatActivity {
 
-    private static final String MAKE_LENS = "Canon";
-    private static final String FOCAL_LENGTH_LENS = "200";
-    private static final String APERTURE_LENS = "2.8";
+    private static final String INDEX = "0";
     LensManager lenses;
     Lens ln;
 
@@ -35,6 +34,7 @@ public class EditLens extends AppCompatActivity {
 
         lenses = LensManager.getInstance();
         GetData();
+        Settext_hint();
     }
 
     @Override
@@ -46,27 +46,70 @@ public class EditLens extends AppCompatActivity {
     @Override
     public  boolean onOptionsItemSelected(MenuItem item){
         switch(item.getItemId()) {
+            case R.id.action_bar_button_ok:
+                EditText make_et = findViewById(R.id.input_Lensmake);
+                EditText flen_et = findViewById(R.id.input_Lensfl);
+                EditText Aper_et = findViewById(R.id.input_Lensaperture);
+                if(make_et.getText().toString().isEmpty()){
+                    Toast.makeText(EditLens.this,"Make cannot be empty",Toast.LENGTH_SHORT).show();
+                    break;
+                }
+                double Aperture = Double.parseDouble(Aper_et.getText().toString());
+                if(Aperture < 1.4){
+                    Toast.makeText(EditLens.this,"Aperture cannot be less than 1.4",Toast.LENGTH_SHORT).show();
+                    break;
+                } else if(Aper_et.getText().toString().isEmpty()){
+                    Toast.makeText(EditLens.this,"Aperture cannot be empty",Toast.LENGTH_SHORT).show();
+                    break;
+                }
+                int Flength = Integer.parseInt(flen_et.getText().toString());
+                if(Flength < 0){
+                    Toast.makeText(EditLens.this,"Focal length cannot be 0 or negative",Toast.LENGTH_SHORT).show();
+                    break;
+                } else if (flen_et.getText().toString().isEmpty()){
+                    Toast.makeText(EditLens.this,"Focal length cannot be empty",Toast.LENGTH_SHORT).show();
+                    break;
+                }
+                if(make_et.getText().toString().isEmpty()||Aper_et.getText().toString().isEmpty()||flen_et.getText().toString().isEmpty()){
+                    Toast.makeText(EditLens.this,"ERROR: Check input!",Toast.LENGTH_SHORT).show();
+                    break;
+                } else {
+                    Toast.makeText(EditLens.this, "Lens Edited!", Toast.LENGTH_SHORT).show();
+                    lenses.lenses.get(Integer.parseInt(INDEX)).setMake(make_et.getText().toString());
+                    lenses.lenses.get(Integer.parseInt(INDEX)).setMaximum_aperture(Aperture);
+                    lenses.lenses.get(Integer.parseInt(INDEX)).setFocal_length(Flength);
+                }
+                break;
             case android.R.id.home:
                 Toast.makeText(EditLens.this,"Pressed cancel!",Toast.LENGTH_SHORT).show();
                 finish();
             default:
                 return super.onOptionsItemSelected(item);
         }
+        return super.onOptionsItemSelected(item);
+    }
+
+    private void Settext_hint() {
+        EditText make_et = findViewById(R.id.input_Lensmake);
+        EditText flen_et = findViewById(R.id.input_Lensfl);
+        EditText Aper_et = findViewById(R.id.input_Lensaperture);
+        make_et.setText(ln.getMake());
+        make_et.setHint(ln.getMake());
+        flen_et.setText(ln.getFocal_length()+"");
+        flen_et.setHint("200 for 200mm");
+        Aper_et.setText(""+ln.getMaximum_aperture());
+        Aper_et.setHint("2.8 for F2.8");
     }
 
     private void GetData() {
         Intent intent = getIntent();
-        String DOF_make = intent.getStringExtra(MAKE_LENS);
-        int DOF_focalLength = intent.getIntExtra(FOCAL_LENGTH_LENS,0);
-        double DOF_aperture = intent.getDoubleExtra(APERTURE_LENS,0.0);
-        ln = new Lens(DOF_make,DOF_aperture,DOF_focalLength,R.drawable.lens1);
+        int Lens_Index = intent.getIntExtra(INDEX,0);
+        ln = lenses.lenses.get(Lens_Index);
     }
 
-    public static Intent makeLaunchIntent(Context c, Lens lens){
+    public static Intent makeLaunchIntent(Context c, int lens_index){
         Intent intent = new Intent(c, EditLens.class);
-        intent.putExtra(MAKE_LENS,lens.getMake());
-        intent.putExtra(FOCAL_LENGTH_LENS,lens.getFocal_length());
-        intent.putExtra(APERTURE_LENS,lens.getMaximum_aperture());
+        intent.putExtra(INDEX,lens_index);
         return intent;
     }
 }

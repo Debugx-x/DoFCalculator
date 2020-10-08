@@ -27,9 +27,7 @@ import java.text.DecimalFormat;
 
 public class DOFCalculator extends AppCompatActivity {
 
-    private static final String MAKE = "Canon";
-    private static final String FOCAL_LENGTH = "200";
-    private static final String APERTURE = "2.8";
+    private static String INDEX = "0";
     private static final int REQUESTED_CODE = 13;
     LensManager lenses;
     Lens ln;
@@ -51,7 +49,7 @@ public class DOFCalculator extends AppCompatActivity {
         lenses = LensManager.getInstance();
         FloatingActionButton fab = findViewById(R.id.floatingActionButton_edit);
         fab.setOnClickListener(v -> {
-            Intent intent = EditLens.makeLaunchIntent(DOFCalculator.this, ln);
+            Intent intent = EditLens.makeLaunchIntent(DOFCalculator.this, Integer.parseInt(INDEX));
             startActivity(intent);
             });
         GetData();
@@ -73,7 +71,7 @@ public class DOFCalculator extends AppCompatActivity {
                 startActivity(i);
                 return true;
             case android.R.id.home:
-                Toast.makeText(DOFCalculator.this,"Pressed cancel!",Toast.LENGTH_SHORT).show();
+                Toast.makeText(DOFCalculator.this,"Pressed Back!",Toast.LENGTH_SHORT).show();
                 finish();
             default:
                 return super.onOptionsItemSelected(item);
@@ -131,19 +129,15 @@ public class DOFCalculator extends AppCompatActivity {
         });
     }
 
-    public static Intent makeLaunchIntent(Context c, Lens lens){
+    public static Intent makeLaunchIntent(Context c, int Lens_index){
         Intent intent = new Intent(c, DOFCalculator.class);
-        intent.putExtra(MAKE,lens.getMake());
-        intent.putExtra(FOCAL_LENGTH,lens.getFocal_length());
-        intent.putExtra(APERTURE,lens.getMaximum_aperture());
+        intent.putExtra(INDEX,Lens_index);
         return intent;
     }
 
     private void GetData() {
         Intent intent = getIntent();
-        String DOF_make = intent.getStringExtra(MAKE);
-        int DOF_focalLength = intent.getIntExtra(FOCAL_LENGTH,0);
-        double DOF_aperture = intent.getDoubleExtra(APERTURE,0.0);
-        ln = new Lens(DOF_make,DOF_aperture,DOF_focalLength,R.drawable.lens1);
+        int Lens_Index = intent.getIntExtra(INDEX,0);
+        ln = lenses.lenses.get(Lens_Index);
     }
 }

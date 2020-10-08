@@ -44,6 +44,8 @@ public class MainActivity extends AppCompatActivity {
         fab.setOnClickListener(v -> {
             Intent intent = AddLens.makeLaunchIntent(MainActivity.this);
             startActivityForResult(intent, REQUESTED_CODE);
+            TextView tv1 = findViewById(R.id.text_newlens);
+            tv1.setText("");
         });
         populateLensMangerOnlyonce();
         populateList();
@@ -51,10 +53,7 @@ public class MainActivity extends AppCompatActivity {
         if(lenses.lenses.size() == 0 )
         {
             TextView tv = (TextView) findViewById(R.id.text_newlens);
-            tv.setText("Add a New Lens to begin by clicking on the '+' button");
-        } else {
-            TextView tv1 = (TextView) findViewById(R.id.text_newlens);
-            tv1.setText("");
+            tv.setText(R.string.add_lens_main);
         }
     }
     @Override
@@ -145,7 +144,7 @@ public class MainActivity extends AppCompatActivity {
             //make
             TextView makeT = iview.findViewById(R.id.input_Make);
             makeT.setText(temp.getMake());
-            //F length
+            //Focal length
             TextView focallenT = iview.findViewById(R.id.text_focallen);
             focallenT.setText(temp.getFocal_length() + "mm");
             //Aperature

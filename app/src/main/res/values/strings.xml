@@ -54,4 +54,8 @@
     <string name="lens_focal_length">Lens Focal Length</string>
     <string name="lens_make">Lens Make</string>
     <string name="make">Make</string>
+    <string name="invalid_CoC">Invalid Circle of Confusion</string>
+    <string name="invalid_distance">Invalid Distance to Subject</string>
+    <string name="invalid_ap">Invalid Aperture</string>
+    <string name="add_lens_main">Add a New Lens to begin by clicking on the \'+\' button</string>
 </resources>

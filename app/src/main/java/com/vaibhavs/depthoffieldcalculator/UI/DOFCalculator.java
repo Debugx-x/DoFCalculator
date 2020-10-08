@@ -87,44 +87,43 @@ public class DOFCalculator extends AppCompatActivity {
 
     private void Calculate() {
         Button Calc_btn = (Button) findViewById(R.id.btn_Calc);
-        Calc_btn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                EditText coc_et = (EditText) findViewById(R.id.input_CoC);
-                double COC =  Double.parseDouble(coc_et.getText().toString());
-                EditText dist_et = (EditText) findViewById(R.id.input_Distance);
-                double Distance = Double.parseDouble(dist_et.getText().toString());
-                EditText aper_et = (EditText) findViewById(R.id.input_Aperature);
-                double Apert = Double.parseDouble(aper_et.getText().toString());
+        Calc_btn.setOnClickListener((View.OnClickListener) v -> {
 
-                //Setting up textview
-                TextView NFocal_dist = (TextView) findViewById(R.id.text_NFDistance);
-                TextView FFocal_dist = (TextView) findViewById(R.id.text_FFDistance);
-                TextView DoField = (TextView) findViewById(R.id.text_DoF);
-                TextView HFocal_dist = (TextView) findViewById(R.id.text_HFDistance);
+            //Setting up EditTexts
+            EditText coc_et = (EditText) findViewById(R.id.input_CoC);
+            double COC =  Double.parseDouble(coc_et.getText().toString());
+            EditText dist_et = (EditText) findViewById(R.id.input_Distance);
+            double Distance = Double.parseDouble(dist_et.getText().toString());
+            EditText aper_et = (EditText) findViewById(R.id.input_Aperature);
+            double Apert = Double.parseDouble(aper_et.getText().toString());
 
-                if(COC <= 0.0) {
-                    NFocal_dist.setText("Invalid Circle of Confusion");
-                    FFocal_dist.setText("Invalid Circle of Confusion");
-                    DoField.setText("Invalid Circle of Confusion");
-                    HFocal_dist.setText("Invalid Circle of Confusion");
-                } else if (Distance <= 0.0 ) {
-                    NFocal_dist.setText("Invalid Distance to Subject");
-                    FFocal_dist.setText("Invalid Distance to Subject");
-                    DoField.setText("Invalid Distance to Subject");
-                    HFocal_dist.setText("Invalid Distance to Subject");
-                } else if (Apert < 1.4 || Apert < ln.getMaximum_aperture() ) {
-                    NFocal_dist.setText("Invalid Aperture");
-                    FFocal_dist.setText("Invalid Aperture");
-                    DoField.setText("Invalid Aperture");
-                    HFocal_dist.setText("Invalid Aperture");
-                } else {
-                    Calculator lens = new Calculator(ln,Apert,Distance,COC);
-                    NFocal_dist.setText(formatM(lens.Calc_Near_Focalpoint())+"m");
-                    FFocal_dist.setText(formatM(lens.Calc_Far_Focalpoint())+"m");
-                    DoField.setText(formatM(lens.Calc_Depth_of_Field())+"m");
-                    HFocal_dist.setText(formatM(lens.Calc_Hyperfocal_Distance())+"m");
-                }
+            //Setting up TextViews
+            TextView NFocal_dist = (TextView) findViewById(R.id.text_NFDistance);
+            TextView FFocal_dist = (TextView) findViewById(R.id.text_FFDistance);
+            TextView DoField = (TextView) findViewById(R.id.text_DoF);
+            TextView HFocal_dist = (TextView) findViewById(R.id.text_HFDistance);
+
+            if(COC <= 0.0) {
+                NFocal_dist.setText(R.string.invalid_CoC);
+                FFocal_dist.setText(R.string.invalid_CoC);
+                DoField.setText(R.string.invalid_CoC);
+                HFocal_dist.setText(R.string.invalid_CoC);
+            } else if (Distance <= 0.0 ) {
+                NFocal_dist.setText(R.string.invalid_distance);
+                FFocal_dist.setText(R.string.invalid_distance);
+                DoField.setText(R.string.invalid_distance);
+                HFocal_dist.setText(R.string.invalid_distance);
+            } else if (Apert < 1.4 || Apert < ln.getMaximum_aperture() ) {
+                NFocal_dist.setText(R.string.invalid_ap);
+                FFocal_dist.setText(R.string.invalid_ap);
+                DoField.setText(R.string.invalid_ap);
+                HFocal_dist.setText(R.string.invalid_ap);
+            } else {
+                Calculator lens = new Calculator(ln,Apert,Distance,COC);
+                NFocal_dist.setText(formatM(lens.Calc_Near_Focalpoint())+"m");
+                FFocal_dist.setText(formatM(lens.Calc_Far_Focalpoint())+"m");
+                DoField.setText(formatM(lens.Calc_Depth_of_Field())+"m");
+                HFocal_dist.setText(formatM(lens.Calc_Hyperfocal_Distance())+"m");
             }
         });
     }

@@ -16,6 +16,9 @@ import com.vaibhavs.depthoffieldcalculator.Model.Lens;
 import com.vaibhavs.depthoffieldcalculator.Model.LensManager;
 import com.vaibhavs.depthoffieldcalculator.R;
 
+/**
+ * This activity is used to edit the Selected lens
+ */
 public class EditLens extends AppCompatActivity {
 
     private static final String INDEX = "0";
@@ -75,6 +78,7 @@ public class EditLens extends AppCompatActivity {
                     break;
                 } else {
                     Toast.makeText(EditLens.this, "Lens Edited!", Toast.LENGTH_SHORT).show();
+                    // I utilise the setters in the Lens class to actually edit the lens Instead of Delete and then Add
                     lenses.lenses.get(Integer.parseInt(INDEX)).setMake(make_et.getText().toString());
                     lenses.lenses.get(Integer.parseInt(INDEX)).setMaximum_aperture(Aperture);
                     lenses.lenses.get(Integer.parseInt(INDEX)).setFocal_length(Flength);

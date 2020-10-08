@@ -99,27 +99,27 @@ public class AddLens extends AppCompatActivity {
     // Lens Image(Icon) selector
 
     private void selectIcon() {
-        ImageButton btn_icon1 = (ImageButton) findViewById(R.id.img_icon1);
+        ImageButton btn_icon1 = findViewById(R.id.img_icon1);
         btn_icon1.setOnClickListener(v -> {
             Toast.makeText(AddLens.this,"Selected Icon 1",Toast.LENGTH_SHORT).show();
             Iconid = iconIDs[0];
         });
-        ImageButton btn_icon2 = (ImageButton) findViewById(R.id.img_icon2);
+        ImageButton btn_icon2 = findViewById(R.id.img_icon2);
         btn_icon2.setOnClickListener(v -> {
             Toast.makeText(AddLens.this,"Selected Icon 2",Toast.LENGTH_SHORT).show();
             Iconid = iconIDs[1];
         });
-        ImageButton btn_icon3 = (ImageButton) findViewById(R.id.img_icon3);
+        ImageButton btn_icon3 = findViewById(R.id.img_icon3);
         btn_icon3.setOnClickListener(v -> {
             Toast.makeText(AddLens.this,"Selected Icon 3",Toast.LENGTH_SHORT).show();
             Iconid = iconIDs[2];
         });
-        ImageButton btn_icon4 = (ImageButton) findViewById(R.id.img_icon4);
+        ImageButton btn_icon4 = findViewById(R.id.img_icon4);
         btn_icon4.setOnClickListener(v -> {
             Toast.makeText(AddLens.this,"Selected Icon 4",Toast.LENGTH_SHORT).show();
             Iconid = iconIDs[3];
         });
-        ImageButton btn_icon5 = (ImageButton) findViewById(R.id.img_icon5);
+        ImageButton btn_icon5 = findViewById(R.id.img_icon5);
         btn_icon5.setOnClickListener(v -> {
             Toast.makeText(AddLens.this,"Selected Icon 5",Toast.LENGTH_SHORT).show();
             Iconid = iconIDs[4];

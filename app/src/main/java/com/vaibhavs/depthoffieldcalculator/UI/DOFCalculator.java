@@ -30,7 +30,7 @@ public class DOFCalculator extends AppCompatActivity {
     private static String INDEX = "0";
     private static final int REQUESTED_CODE = 13;
     LensManager lenses;
-    Lens ln;
+    static Lens ln;
 
     private String formatM(double distanceInM){
         DecimalFormat df = new DecimalFormat("0.00");
@@ -51,6 +51,7 @@ public class DOFCalculator extends AppCompatActivity {
         fab.setOnClickListener(v -> {
             Intent intent = EditLens.makeLaunchIntent(DOFCalculator.this, Integer.parseInt(INDEX));
             startActivity(intent);
+            finish();
             });
         GetData();
         Display_Lens();
@@ -69,13 +70,15 @@ public class DOFCalculator extends AppCompatActivity {
             case R.id.action_remove:
                 Intent i = new Intent(DOFCalculator.this,RemoveLens.class);
                 startActivity(i);
-                return true;
+                ln = lenses.lenses.get(Integer.parseInt(INDEX));
+                break;
             case android.R.id.home:
                 Toast.makeText(DOFCalculator.this,"Pressed Back!",Toast.LENGTH_SHORT).show();
                 finish();
             default:
                 return super.onOptionsItemSelected(item);
         }
+        return super.onOptionsItemSelected(item);
     }
 
 

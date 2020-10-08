@@ -82,6 +82,7 @@ public class EditLens extends AppCompatActivity {
                     lenses.lenses.get(Integer.parseInt(INDEX)).setMake(make_et.getText().toString());
                     lenses.lenses.get(Integer.parseInt(INDEX)).setMaximum_aperture(Aperture);
                     lenses.lenses.get(Integer.parseInt(INDEX)).setFocal_length(Flength);
+                    finish();
                 }
                 break;
             case android.R.id.home:

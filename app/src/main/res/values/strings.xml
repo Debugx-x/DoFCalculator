@@ -58,4 +58,5 @@
     <string name="invalid_distance">Invalid Distance to Subject</string>
     <string name="invalid_ap">Invalid Aperture</string>
     <string name="add_lens_main">Add a New Lens to begin by clicking on the \'+\' button</string>
+    <string name="lens_aperture">Lens Aperture</string>
 </resources>
